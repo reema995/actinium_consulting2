@@ -1,0 +1,116 @@
+<section class="bg-[#1d2858] px-6 py-20 text-center text-white md:px-12">
+      <h1 class="mb-4 text-3xl font-bold tracking-tight md:text-5xl">Contact Actinium Consulting</h1>
+      <p class="mx-auto max-w-2xl text-lg text-gray-300 md:text-xl">Ready to start your journey? Reach out for a free consultation.</p>
+    </section>
+
+    <section class="mx-auto grid max-w-6xl grid-cols-1 gap-16 px-6 py-16 md:grid-cols-2 md:px-12">
+      <div>
+        <form class="space-y-6" [formGroup]="form" (ngSubmit)="submit()">
+          <div>
+            <label class="mb-1 block text-sm font-medium text-gray-700" for="name">Name</label>
+            <input
+              class="w-full rounded-md border border-gray-300 px-4 py-2.5 focus:border-[#1d2858] focus:ring-[#1d2858]"
+              id="name"
+              formControlName="name"
+              type="text"
+            />
+          </div>
+          <div>
+            <label class="mb-1 block text-sm font-medium text-gray-700" for="email">Email Address</label>
+            <input
+              class="w-full rounded-md border border-gray-300 px-4 py-2.5 focus:border-[#1d2858] focus:ring-[#1d2858]"
+              id="email"
+              formControlName="email"
+              type="email"
+            />
+          </div>
+          <div>
+            <label class="mb-1 block text-sm font-medium text-gray-700" for="subject">Subject</label>
+            <input
+              class="w-full rounded-md border border-gray-300 px-4 py-2.5 focus:border-[#1d2858] focus:ring-[#1d2858]"
+              id="subject"
+              formControlName="subject"
+              type="text"
+            />
+          </div>
+          <div>
+            <label class="mb-1 block text-sm font-medium text-gray-700" for="message">Message</label>
+            <textarea
+              class="w-full rounded-md border border-gray-300 px-4 py-2.5 focus:border-[#1d2858] focus:ring-[#1d2858]"
+              id="message"
+              formControlName="message"
+              rows="5"
+            ></textarea>
+          </div>
+          <button class="w-full rounded-md bg-[#1d2858] px-6 py-3 font-semibold text-white transition-colors duration-200 hover:bg-[#131929]" type="submit">
+            Send Message
+          </button>
+          <p *ngIf="isSuccess" class="text-sm text-emerald-700">Message submitted locally.</p>
+        </form>
+      </div>
+
+      <div class="space-y-10 md:mt-2 md:pl-8">
+        <div class="flex items-start gap-4">
+          <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#1d2858] text-xl text-white">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <div>
+            <h3 class="mb-1 text-lg font-semibold text-gray-900">Email:</h3>
+            <a class="text-gray-600 hover:text-[#1d2858]" [href]="'mailto:' + contact.email">{{ contact.email }}</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#1d2858] text-xl text-white">
+            <i class="fa-solid fa-phone"></i>
+          </div>
+          <div>
+            <h3 class="mb-1 text-lg font-semibold text-gray-900">Phone:</h3>
+            <div class="flex flex-col text-gray-600">
+              <span *ngIf="contact.tel">Tel: <a class="hover:text-[#1d2858]" [href]="'tel:' + contact.tel.replaceAll(' ', '')">{{ contact.tel }}</a></span>
+              <span>Mob: <a class="hover:text-[#1d2858]" [href]="phoneHref">{{ contact.phone }}</a></span>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#1d2858] text-xl text-white">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div>
+            <h3 class="mb-1 text-lg font-semibold text-gray-900">Location:</h3>
+            <p class="leading-relaxed text-gray-600">
+              {{ contact.address[0] }}<br />
+              {{ contact.address[1] }}
+            </p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#1d2858] text-xl text-white">
+            <i class="fa-solid fa-globe"></i>
+          </div>
+          <div>
+            <h3 class="mb-1 text-lg font-semibold text-gray-900">Online:</h3>
+            <a class="block text-gray-600 hover:text-[#1d2858] mb-2" [href]="'https://' + contact.website" target="_blank">{{ contact.website }}</a>
+            <div class="flex space-x-4">
+              <a href="https://linkedin.com/company/ActiniumConsultationsJo" target="_blank" class="h-8 w-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-[#0077b5] hover:text-white transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="https://facebook.com/ActiniumConsultationsJo" target="_blank" class="h-8 w-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-[#1877f2] hover:text-white transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="https://instagram.com/ActiniumConsultationsJo" target="_blank" class="h-8 w-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-[#e4405f] hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto w-full max-w-6xl px-6 pb-16 md:px-12">
+      <div class="relative w-full overflow-hidden rounded-xl bg-gray-200 shadow-md">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3385.11528924027!2d35.86245038483863!3d31.95776888122701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzHCsDU3JzI4LjAiTiAzNcKwNTEnMzYuOSJF!5e0!3m2!1sar!2sjo!4v1775738250668!5m2!1sar!2sjo" 
+          width="100%" 
+          height="450" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </section>
+

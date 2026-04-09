@@ -1,0 +1,41 @@
+// src/styles/_theme.scss
+@use 'variables' as *;
+
+body {
+  margin: 0;
+  font-family: $font-family-base;
+  background-color: $color-background;
+  color: $color-primary;
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: darken($color-primary, 10%);
+}
+
+button {
+  background-color: $color-primary;
+  color: $color-white;
+  border: none;
+  border-radius: $border-radius;
+  padding: 0.5rem 1rem;
+  box-shadow: $box-shadow-soft;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+button:hover {
+  background-color: lighten($color-primary, 10%);
+}
+
+// Glass‑morphism card class
+.card-glass {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: $border-radius;
+  box-shadow: $box-shadow-soft;
+  padding: 1rem;
+}

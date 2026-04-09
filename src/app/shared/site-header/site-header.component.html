@@ -1,0 +1,38 @@
+<header class="sticky left-0 right-0 top-0 z-50 bg-white shadow-md transition-all duration-300">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-20 md:h-24 items-center justify-between">
+      <a class="flex shrink-0 items-center transition-transform hover:scale-105" routerLink="/">
+        <img alt="Actinium Logo" class="h-16 md:h-20 w-auto object-contain" src="/assets/logo.jpg" />
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden h-full items-center md:flex">
+        <a *ngFor="let item of navItems" class="flex h-full items-center px-6 text-sm font-medium transition-colors"
+          [routerLink]="item.path"
+          [ngClass]="isActive(item.path) ? 'bg-[#1d2858] text-white' : 'text-gray-700 hover:bg-gray-50 hover:text-[#1d2858]'">
+          {{ item.label }}
+        </a>
+      </nav>
+
+      <!-- Mobile menu button -->
+      <button type="button"
+        class="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-[#1d2858] focus:outline-none md:hidden"
+        (click)="toggleMobileMenu()" aria-label="Toggle navigation">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile view -->
+    <div *ngIf="mobileMenuOpen" class="border-t border-gray-100 pb-4 pt-2 md:hidden">
+      <nav class="flex flex-col space-y-1">
+        <a *ngFor="let item of navItems" class="block rounded-md px-3 py-2 text-base font-medium transition-colors"
+          [routerLink]="item.path"
+          [ngClass]="isActive(item.path) ? 'bg-[#1d2858] text-white' : 'text-gray-700 hover:bg-gray-50 hover:text-[#1d2858]'">
+          {{ item.label }}
+        </a>
+      </nav>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Actinium Consulting</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Actinium Consulting helps organizations in Jordan and Saudi Arabia achieve ISO certification, strengthen governance, and improve audit readiness."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script>
+      window.tailwind = window.tailwind || {};
+      window.tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                dark: '#17233b',
+                heading: '#152036',
+                text: '#475569',
+                light: '#f3f6fb',
+                blue: '#2d58d6',
+                blueHover: '#2348af',
+                border: '#d7dfeb',
+                muted: '#8ea0b8'
+              },
+              'brand-gray': '#f3f4f6',
+              'brand-blue-bg': '#2c3550',
+              'brand-blue-dark': '#131929',
+              'brand-accent': '#e2e8f0'
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif']
+            },
+            boxShadow: {
+              soft: '0 22px 60px rgba(15, 23, 42, 0.12)'
+            }
+          }
+        }
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+  </head>
+  <body class="bg-slate-50 text-slate-800">
+    <app-root></app-root>
+  </body>
+</html>

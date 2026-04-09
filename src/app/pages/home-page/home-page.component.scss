@@ -1,0 +1,16 @@
+:host {
+  display: block;
+}
+
+.chevron-arrow {
+  clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%, 10% 50%);
+}
+
+.chevron-first {
+  clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+}
+
+.chevron-last {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 10% 50%);
+}
+@keyframes scroll {0% { transform: translateX(0); } 100% { transform: translateX(-100%); }} .marquee-container { display: flex; overflow: hidden; position: relative; width: 100%; mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); } .marquee-content { display: flex; flex: 0 0 auto; align-items: center; min-width: 100%; animation: scroll 25s linear infinite; gap: 4rem; padding-right: 4rem; } .marquee-container:hover .marquee-content { animation-play-state: paused; }
