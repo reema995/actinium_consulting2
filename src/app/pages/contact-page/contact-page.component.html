@@ -1,116 +1,162 @@
 <section class="bg-[#1d2858] px-6 py-20 text-center text-white md:px-12">
-      <h1 class="mb-4 text-3xl font-bold tracking-tight md:text-5xl">Contact Actinium Consulting</h1>
-      <p class="mx-auto max-w-2xl text-lg text-gray-300 md:text-xl">Ready to start your journey? Reach out for a free consultation.</p>
-    </section>
+  <h1 class="mb-4 text-3xl font-bold tracking-tight md:text-5xl" [attr.dir]="textDir()">{{ page().hero.title }}</h1>
+  <p class="mx-auto max-w-2xl text-lg text-gray-300 md:text-xl" [attr.dir]="textDir()">
+    {{ page().hero.description }}
+  </p>
+</section>
 
-    <section class="mx-auto grid max-w-6xl grid-cols-1 gap-16 px-6 py-16 md:grid-cols-2 md:px-12">
+<section class="mx-auto grid max-w-6xl grid-cols-1 gap-16 px-6 py-16 md:grid-cols-2 md:px-12">
+  <div [class.text-right]="isArabic()">
+    <form class="space-y-6" [formGroup]="form" (ngSubmit)="submit()" novalidate>
       <div>
-        <form class="space-y-6" [formGroup]="form" (ngSubmit)="submit()">
-          <div>
-            <label class="mb-1 block text-sm font-medium text-gray-700" for="name">Name</label>
-            <input
-              class="w-full rounded-md border border-gray-300 px-4 py-2.5 focus:border-[#1d2858] focus:ring-[#1d2858]"
-              id="name"
-              formControlName="name"
-              type="text"
-            />
-          </div>
-          <div>
-            <label class="mb-1 block text-sm font-medium text-gray-700" for="email">Email Address</label>
-            <input
-              class="w-full rounded-md border border-gray-300 px-4 py-2.5 focus:border-[#1d2858] focus:ring-[#1d2858]"
-              id="email"
-              formControlName="email"
-              type="email"
-            />
-          </div>
-          <div>
-            <label class="mb-1 block text-sm font-medium text-gray-700" for="subject">Subject</label>
-            <input
-              class="w-full rounded-md border border-gray-300 px-4 py-2.5 focus:border-[#1d2858] focus:ring-[#1d2858]"
-              id="subject"
-              formControlName="subject"
-              type="text"
-            />
-          </div>
-          <div>
-            <label class="mb-1 block text-sm font-medium text-gray-700" for="message">Message</label>
-            <textarea
-              class="w-full rounded-md border border-gray-300 px-4 py-2.5 focus:border-[#1d2858] focus:ring-[#1d2858]"
-              id="message"
-              formControlName="message"
-              rows="5"
-            ></textarea>
-          </div>
-          <button class="w-full rounded-md bg-[#1d2858] px-6 py-3 font-semibold text-white transition-colors duration-200 hover:bg-[#131929]" type="submit">
-            Send Message
-          </button>
-          <p *ngIf="isSuccess" class="text-sm text-emerald-700">Message submitted locally.</p>
-        </form>
+        <label class="mb-1 block text-sm font-medium text-gray-700" for="name" [attr.dir]="textDir()">{{ page().form.nameLabel }}</label>
+        <input
+          [attr.aria-invalid]="hasError('name')"
+          class="w-full rounded-md border border-gray-300 px-4 py-2.5 focus:border-[#1d2858] focus:ring-[#1d2858]"
+          id="name"
+          formControlName="name"
+          type="text"
+        />
+        <p *ngIf="hasError('name')" class="contact-error" [attr.dir]="textDir()">{{ getErrorMessage('name') }}</p>
       </div>
 
-      <div class="space-y-10 md:mt-2 md:pl-8">
-        <div class="flex items-start gap-4">
-          <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#1d2858] text-xl text-white">
-            <i class="fa-solid fa-envelope"></i>
-          </div>
-          <div>
-            <h3 class="mb-1 text-lg font-semibold text-gray-900">Email:</h3>
-            <a class="text-gray-600 hover:text-[#1d2858]" [href]="'mailto:' + contact.email">{{ contact.email }}</a>
-          </div>
-        </div>
-        <div class="flex items-start gap-4">
-          <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#1d2858] text-xl text-white">
-            <i class="fa-solid fa-phone"></i>
-          </div>
-          <div>
-            <h3 class="mb-1 text-lg font-semibold text-gray-900">Phone:</h3>
-            <div class="flex flex-col text-gray-600">
-              <span *ngIf="contact.tel">Tel: <a class="hover:text-[#1d2858]" [href]="'tel:' + contact.tel.replaceAll(' ', '')">{{ contact.tel }}</a></span>
-              <span>Mob: <a class="hover:text-[#1d2858]" [href]="phoneHref">{{ contact.phone }}</a></span>
-            </div>
-          </div>
-        </div>
-        <div class="flex items-start gap-4">
-          <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#1d2858] text-xl text-white">
-            <i class="fa-solid fa-location-dot"></i>
-          </div>
-          <div>
-            <h3 class="mb-1 text-lg font-semibold text-gray-900">Location:</h3>
-            <p class="leading-relaxed text-gray-600">
-              {{ contact.address[0] }}<br />
-              {{ contact.address[1] }}
-            </p>
-          </div>
-        </div>
-        <div class="flex items-start gap-4">
-          <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#1d2858] text-xl text-white">
-            <i class="fa-solid fa-globe"></i>
-          </div>
-          <div>
-            <h3 class="mb-1 text-lg font-semibold text-gray-900">Online:</h3>
-            <a class="block text-gray-600 hover:text-[#1d2858] mb-2" [href]="'https://' + contact.website" target="_blank">{{ contact.website }}</a>
-            <div class="flex space-x-4">
-              <a href="https://linkedin.com/company/ActiniumConsultationsJo" target="_blank" class="h-8 w-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-[#0077b5] hover:text-white transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
-              <a href="https://facebook.com/ActiniumConsultationsJo" target="_blank" class="h-8 w-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-[#1877f2] hover:text-white transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
-              <a href="https://instagram.com/ActiniumConsultationsJo" target="_blank" class="h-8 w-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-[#e4405f] hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-          </div>
+      <div>
+        <label class="mb-1 block text-sm font-medium text-gray-700" for="email" [attr.dir]="textDir()">{{ page().form.emailLabel }}</label>
+        <input
+          [attr.aria-invalid]="hasError('email')"
+          class="contact-link w-full rounded-md border border-gray-300 px-4 py-2.5 focus:border-[#1d2858] focus:ring-[#1d2858]"
+          dir="ltr"
+          id="email"
+          formControlName="email"
+          type="email"
+        />
+        <p *ngIf="hasError('email')" class="contact-error" [attr.dir]="textDir()">{{ getErrorMessage('email') }}</p>
+      </div>
+
+      <div>
+        <label class="mb-1 block text-sm font-medium text-gray-700" for="subject" [attr.dir]="textDir()">{{ page().form.subjectLabel }}</label>
+        <input
+          [attr.aria-invalid]="hasError('subject')"
+          class="w-full rounded-md border border-gray-300 px-4 py-2.5 focus:border-[#1d2858] focus:ring-[#1d2858]"
+          id="subject"
+          formControlName="subject"
+          type="text"
+        />
+        <p *ngIf="hasError('subject')" class="contact-error" [attr.dir]="textDir()">{{ getErrorMessage('subject') }}</p>
+      </div>
+
+      <div>
+        <label class="mb-1 block text-sm font-medium text-gray-700" for="message" [attr.dir]="textDir()">{{ page().form.messageLabel }}</label>
+        <textarea
+          [attr.aria-invalid]="hasError('message')"
+          class="w-full rounded-md border border-gray-300 px-4 py-2.5 focus:border-[#1d2858] focus:ring-[#1d2858]"
+          id="message"
+          formControlName="message"
+          rows="5"
+        ></textarea>
+        <p *ngIf="hasError('message')" class="contact-error" [attr.dir]="textDir()">{{ getErrorMessage('message') }}</p>
+      </div>
+
+      <button class="w-full rounded-md bg-[#1d2858] px-6 py-3 font-semibold text-white transition-colors duration-200 hover:bg-[#131929]" type="submit">
+        {{ page().form.submitLabel }}
+      </button>
+
+      <p *ngIf="isSuccess" class="text-sm text-emerald-700" [attr.dir]="textDir()">{{ page().form.successMessage }}</p>
+    </form>
+  </div>
+
+  <div class="space-y-10 md:mt-2" [ngClass]="isArabic() ? 'text-right md:pr-8' : 'text-left md:pl-8'">
+    <div class="contact-info-block" [class.contact-info-block--rtl]="isArabic()" [class.contact-info-block--ltr]="!isArabic()">
+      <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#1d2858] text-xl text-white">
+        <i class="fa-solid fa-envelope"></i>
+      </div>
+      <div class="contact-info-copy">
+        <h3 class="mb-1 text-lg font-semibold text-gray-900" [attr.dir]="textDir()">{{ page().details.emailTitle }}:</h3>
+        <a class="contact-link text-gray-600 hover:text-[#1d2858]" href="mailto:info@actiniumconsultations.com" dir="ltr">{{ contact().email }}</a>
+      </div>
+    </div>
+
+    <div class="contact-info-block" [class.contact-info-block--rtl]="isArabic()" [class.contact-info-block--ltr]="!isArabic()">
+      <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#1d2858] text-xl text-white">
+        <i class="fa-solid fa-phone"></i>
+      </div>
+      <div class="contact-info-copy">
+        <h3 class="mb-1 text-lg font-semibold text-gray-900" [attr.dir]="textDir()">{{ page().details.phoneTitle }}:</h3>
+        <div class="contact-phone-list text-gray-600">
+          <span class="contact-phone-line" [class.contact-phone-line--rtl]="isArabic()" [class.contact-phone-line--ltr]="!isArabic()">
+            <span [attr.dir]="textDir()">{{ common().telLabel }}:</span>
+            <a *ngIf="contact().tel" class="contact-link hover:text-[#1d2858]" [href]="telHref()" dir="ltr">{{ contact().tel }}</a>
+          </span>
+          <span class="contact-phone-line" [class.contact-phone-line--rtl]="isArabic()" [class.contact-phone-line--ltr]="!isArabic()">
+            <span [attr.dir]="textDir()">{{ common().mobileLabel }}:</span>
+            <a class="contact-link hover:text-[#1d2858]" [href]="phoneHref()" dir="ltr">{{ contact().phone }}</a>
+          </span>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="mx-auto w-full max-w-6xl px-6 pb-16 md:px-12">
-      <div class="relative w-full overflow-hidden rounded-xl bg-gray-200 shadow-md">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3385.11528924027!2d35.86245038483863!3d31.95776888122701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzHCsDU3JzI4LjAiTiAzNcKwNTEnMzYuOSJF!5e0!3m2!1sar!2sjo!4v1775738250668!5m2!1sar!2sjo" 
-          width="100%" 
-          height="450" 
-          style="border:0;" 
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+    <div class="contact-info-block" [class.contact-info-block--rtl]="isArabic()" [class.contact-info-block--ltr]="!isArabic()">
+      <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#1d2858] text-xl text-white">
+        <i class="fa-solid fa-location-dot"></i>
       </div>
-    </section>
+      <div class="contact-info-copy">
+        <h3 class="mb-1 text-lg font-semibold text-gray-900" [attr.dir]="textDir()">{{ page().details.locationTitle }}:</h3>
+        <p class="leading-relaxed text-gray-600" [attr.dir]="textDir()">
+          {{ contact().address[0] }}<br />
+          {{ contact().address[1] }}
+        </p>
+      </div>
+    </div>
 
+    <div class="contact-info-block" [class.contact-info-block--rtl]="isArabic()" [class.contact-info-block--ltr]="!isArabic()">
+      <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#1d2858] text-xl text-white">
+        <i class="fa-solid fa-globe"></i>
+      </div>
+      <div class="contact-info-copy">
+        <h3 class="mb-1 text-lg font-semibold text-gray-900" [attr.dir]="textDir()">{{ page().details.onlineTitle }}:</h3>
+        <a class="contact-link mb-2 block text-gray-600 hover:text-[#1d2858]" [href]="websiteHref()" target="_blank" rel="noreferrer" dir="ltr">
+          {{ contact().website }}
+        </a>
+        <div class="flex gap-4" [class.contact-socials--rtl]="isArabic()" [class.contact-socials--ltr]="!isArabic()">
+          <a
+            href="https://linkedin.com/company/ActiniumConsultationsJo"
+            target="_blank"
+            rel="noreferrer"
+            class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition-colors hover:bg-[#0077b5] hover:text-white"
+          >
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a
+            href="https://facebook.com/ActiniumConsultationsJo"
+            target="_blank"
+            rel="noreferrer"
+            class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition-colors hover:bg-[#1877f2] hover:text-white"
+          >
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a
+            href="https://instagram.com/ActiniumConsultationsJo"
+            target="_blank"
+            rel="noreferrer"
+            class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition-colors hover:bg-[#e4405f] hover:text-white"
+          >
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto w-full max-w-6xl px-6 pb-16 md:px-12">
+  <div class="relative w-full overflow-hidden rounded-xl bg-gray-200 shadow-md">
+    <iframe
+      class="contact-map-frame"
+      [src]="mapUrl()"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Actinium Consulting map"
+    ></iframe>
+  </div>
+</section>

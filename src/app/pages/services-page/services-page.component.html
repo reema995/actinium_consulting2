@@ -1,251 +1,111 @@
 <header class="relative overflow-hidden bg-[#1d2858] px-6 py-24 text-center text-white">
   <div class="relative z-10 mx-auto max-w-5xl">
-    <h1 class="mb-6 text-4xl font-bold tracking-tight md:text-5xl">Our Services</h1>
-    <p class="mx-auto mb-6 max-w-3xl text-lg leading-relaxed text-gray-300 md:text-[17px]">
-      We work with organizations throughout their growth journey by delivering specialized consulting services that promote excellence, improve compliance, and support continuous progress.
+    <h1 class="bidi-plaintext mb-6 text-4xl font-bold tracking-tight md:text-5xl" [attr.dir]="textDir()">{{ page().hero.title }}</h1>
+    <p *ngFor="let paragraph of page().hero.paragraphs; let last = last" class="bidi-plaintext mx-auto max-w-3xl text-lg leading-relaxed text-gray-300 md:text-[17px]" [class.mb-6]="!last" [attr.dir]="textDir()">
+      {{ paragraph }}
     </p>
-    <p class="mx-auto max-w-3xl text-lg leading-relaxed text-gray-300 md:text-[17px]">
-      Each solution is designed around the client&rsquo;s specific needs to strengthen governance, optimize operations, and create long-term value.
-    </p>
-    <div class="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-3 text-left text-sm text-gray-200 md:grid-cols-2">
-      <div class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-xs text-white/80"></i>Strategy, Growth &amp; Organizational Development</div>
-      <div class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-xs text-white/80"></i>Corporate Governance, Risk, Compliance</div>
-      <div class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-xs text-white/80"></i>Policies, Procedures &amp; Process Management</div>
-      <div class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-xs text-white/80"></i>ISO Management Systems, ESG</div>
-      <div class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-xs text-white/80"></i>Training &amp; Capacity Building</div>
-      <div class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-xs text-white/80"></i>Digital Transformation, Artificial Intelligence &amp; Technology Advisory</div>
+
+    <div class="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-3 text-sm text-gray-200 md:grid-cols-2" [ngClass]="isArabic() ? 'text-right' : 'text-left'">
+      <div *ngFor="let point of page().hero.points" class="flex items-start" [ngClass]="isArabic() ? 'flex-row-reverse' : ''">
+        <i class="fa-solid fa-check mt-1 text-xs text-white/80" [ngClass]="isArabic() ? 'ml-3' : 'mr-3'"></i>
+        <span class="bidi-plaintext" [attr.dir]="textDir()">{{ point }}</span>
+      </div>
     </div>
   </div>
+
   <svg class="absolute bottom-0 left-0 -mb-1 w-full text-[#f9fafb]" viewBox="0 0 1440 120" fill="currentColor" preserveAspectRatio="none" style="height: 48px;">
     <path d="M0,120 L1440,120 L1440,0 C1200,80 720,120 0,60 Z"></path>
   </svg>
 </header>
 
-<section class="border-b border-gray-100 bg-[#f9fafb] px-6 py-20">
+<section class="overflow-hidden border-b border-gray-100 bg-[#f9fafb] px-6 py-20">
   <div class="mx-auto max-w-7xl space-y-24">
-    <div class="flex flex-col items-start gap-12 lg:flex-row">
-      <div class="lg:w-1/3 lg:sticky lg:top-32">
-        <div class="mb-4 flex items-center space-x-4">
-          <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-[#1d2858] text-white shadow-md"><i class="fa-solid fa-chess-knight text-2xl"></i></div>
-          <h2 class="text-2xl font-bold text-[#1d2858]">Strategy, Growth &amp; Organizational Development</h2>
-        </div>
-        <p class="text-[15px] leading-relaxed text-[#465373]">
-          Actinium supports organizations in setting clear direction, improving internal effectiveness, and building the capabilities needed for sustainable growth. We work closely with our clients to improve organizational structure, enhance team effectiveness, and translate strategic goals into practical, measurable results.
-        </p>
-      </div>
-      <div class="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm md:p-10 lg:w-2/3">
-        <h3 class="mb-6 border-b border-gray-100 pb-4 text-lg font-bold text-[#1d2858]">Key Services</h3>
-        <ul class="space-y-4 text-[15px] text-gray-600">
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Developing strategic plans and business priorities</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Supporting organizational restructuring and development</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Clarifying roles, responsibilities, and reporting lines</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Improving performance and overall organizational effectiveness</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Strengthening institutional capabilities for long-term success</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="flex flex-col items-start gap-12 lg:flex-row">
-      <div class="lg:w-1/3 lg:sticky lg:top-32">
-        <div class="mb-4 flex items-center space-x-4">
-          <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-[#1d2858] text-white shadow-md"><i class="fa-solid fa-scale-balanced text-2xl"></i></div>
-          <h2 class="text-2xl font-bold text-[#1d2858]">Corporate Governance, Risk, Compliance (GRC)</h2>
-        </div>
-        <p class="text-[15px] leading-relaxed text-[#465373]">
-          Supports organizations in building effective governance, risk, and compliance frameworks that enhance accountability and support confident decision-making. We help clients establish practical governance structures, strengthen internal controls, and embed risk and compliance practices that contribute to long-term resilience and institutional effectiveness.
-        </p>
-      </div>
-      <div class="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm md:p-10 lg:w-2/3">
-        <h3 class="mb-6 border-b border-gray-100 pb-4 text-lg font-bold text-[#1d2858]">Key Services</h3>
-        <ul class="grid grid-cols-1 gap-x-6 gap-y-1 space-y-4 text-[15px] text-gray-600 md:grid-cols-2 md:space-y-0">
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Governance framework design and enhancement</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Board and committee structure development</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Charters, authority matrices, and accountability frameworks</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Compliance framework development</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Risk management integration and alignment</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Transparency and reporting enhancement</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Governance policy development</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="flex flex-col items-start gap-12 lg:flex-row">
-      <div class="lg:w-1/3 lg:sticky lg:top-32">
-        <div class="mb-4 flex items-center space-x-4">
-          <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-[#1d2858] text-white shadow-md"><i class="fa-solid fa-file-signature text-2xl"></i></div>
-          <h2 class="text-2xl font-bold text-[#1d2858]">Policies, Procedures &amp; Process Management</h2>
-        </div>
-        <p class="text-[15px] leading-relaxed text-[#465373]">
-          Actinium helps organizations create clear and well-structured policy and process frameworks that improve consistency, strengthen accountability, and support efficient day-to-day operations.
-        </p>
-      </div>
-      <div class="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm md:p-10 lg:w-2/3">
-        <h3 class="mb-6 border-b border-gray-100 pb-4 text-lg font-bold text-[#1d2858]">Key Services</h3>
-        <ul class="grid grid-cols-1 gap-x-6 gap-y-1 space-y-4 text-[15px] text-gray-600 md:grid-cols-2 md:space-y-0">
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Developing policies and procedures manuals</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Mapping processes and designing workflows</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Improving and redesigning business processes</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Preparing standard operating procedures</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Designing forms, templates, and records</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Clarifying roles, responsibilities, and process ownership</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Structuring and organizing operational documentation</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="block flex-col items-start gap-12 border-t border-gray-200 pt-16">
-      <div class="mb-4 flex items-center space-x-4">
-        <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-[#1d2858] text-white shadow-md"><i class="fa-solid fa-certificate text-2xl"></i></div>
-        <h2 class="text-3xl font-bold text-[#1d2858]">ISO Management Systems, ESG</h2>
-      </div>
-      <p class="max-w-4xl text-[15px] leading-relaxed text-[#465373]">
-        Actinium provides consulting, implementation, and training services for internationally recognized management systems and related frameworks that support quality, resilience, sustainability, and organizational excellence. We help organizations adopt practical systems that improve performance, strengthen compliance, and support long-term value creation.
-      </p>
-
-      <div class="mb-8 mt-12 w-full rounded-2xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
-        <h3 class="mb-6 border-b border-gray-100 pb-4 text-lg font-bold text-[#1d2858]">Key Services</h3>
-        <ul class="grid grid-cols-1 gap-x-6 gap-y-1 space-y-4 text-[15px] text-gray-600 md:grid-cols-2 md:space-y-0">
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Gap assessment and readiness review</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Management system design and implementation</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Documentation and process alignment</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Awareness sessions and staff training</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Internal preparation for certification or assessment</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Continuous improvement support</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Management review and performance monitoring</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Sustainability and excellence framework alignment</li>
-        </ul>
-      </div>
-
-      <div class="w-full">
-        <h3 class="mb-8 text-2xl font-bold text-[#1d2858]">Standards &amp; Frameworks We Support</h3>
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <div class="rounded-xl border border-[#cbd5e1] bg-white p-6 transition hover:border-[#465373]">
-            <h4 class="mb-3 font-bold leading-snug text-[#1d2858]">Quality, Customer Experience &amp; Organizational Excellence</h4>
-            <p class="mb-4 text-sm leading-relaxed text-gray-600">
-              This area helps organizations improve quality, increase customer satisfaction, strengthen consistency, and enhance overall performance through standards such as ISO 9001, ISO 10001, GMP and related excellence frameworks.
-            </p>
-            <div class="flex flex-wrap gap-2 text-xs font-semibold text-[#465373]">
-              <span class="rounded bg-gray-100 px-2 py-1">ISO 9001</span>
-              <span class="rounded bg-gray-100 px-2 py-1">ISO 10001</span>
-              <span class="rounded bg-gray-100 px-2 py-1">GMP</span>
+    <div *ngFor="let section of page().sections; let first = first" [id]="section.id" class="scroll-mt-24" [class.border-t]="!first" [class.border-gray-200]="!first" [class.pt-16]="!first">
+      <ng-container *ngIf="section.type === 'standards'; else standardSection">
+        <div class="block" [class.text-right]="isArabic()" [attr.dir]="textDir()">
+          <div class="mb-8 flex w-full items-start gap-4" [ngClass]="isArabic() ? 'flex-row-reverse text-right' : ''">
+            <div class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-[#1d2858] text-white shadow-md">
+              <i [class]="section.icon + ' text-2xl'"></i>
+            </div>
+            <div class="flex-1 space-y-3">
+              <h2 class="bidi-plaintext text-3xl font-bold leading-tight text-[#1d2858]" [attr.dir]="textDir()">{{ section.title }}</h2>
+              <p class="bidi-plaintext max-w-4xl text-[15px] leading-relaxed text-[#465373]" [class.ml-auto]="isArabic()" [attr.dir]="textDir()">
+                {{ section.description }}
+              </p>
             </div>
           </div>
-          <div class="rounded-xl border border-[#cbd5e1] bg-white p-6 transition hover:border-[#465373]">
-            <h4 class="mb-3 font-bold leading-snug text-[#1d2858]">Health, Safety &amp; Business Resilience</h4>
-            <p class="mb-4 text-sm leading-relaxed text-gray-600">
-              This area helps organizations create safer workplaces, improve preparedness, and maintain continuity during disruptions through standards such as ISO 45001 and ISO 22301.
-            </p>
-            <div class="flex flex-wrap gap-2 text-xs font-semibold text-[#465373]">
-              <span class="rounded bg-gray-100 px-2 py-1">ISO 45001</span>
-              <span class="rounded bg-gray-100 px-2 py-1">ISO 22301</span>
-            </div>
+
+          <div class="mb-8 mt-12 w-full rounded-2xl border border-gray-100 bg-white p-8 shadow-sm md:p-10" [class.text-right]="isArabic()">
+            <h3 class="bidi-plaintext mb-6 border-b border-gray-100 pb-4 text-lg font-bold text-[#1d2858]" [attr.dir]="textDir()">{{ section.itemsHeading }}</h3>
+            <ul class="grid grid-cols-1 gap-x-6 gap-y-4 text-[15px] text-gray-600 md:grid-cols-2">
+              <li *ngFor="let item of section.items" class="flex items-start" [ngClass]="isArabic() ? 'flex-row-reverse' : ''">
+                <i class="fa-solid fa-check mt-1 text-[#465373]" [ngClass]="isArabic() ? 'ml-3' : 'mr-3'"></i>
+                <span class="bidi-plaintext" [attr.dir]="textDir()">{{ item }}</span>
+              </li>
+            </ul>
           </div>
-          <div class="rounded-xl border border-[#cbd5e1] bg-white p-6 transition hover:border-[#465373]">
-            <h4 class="mb-3 font-bold leading-snug text-[#1d2858]">Environmental, Energy, ESG &amp; Sustainability</h4>
-            <p class="mb-4 text-sm leading-relaxed text-gray-600">
-              This area supports organizations in improving environmental performance, using resources more efficiently, and advancing sustainability and ESG goals through standards such as ISO 14001, ISO 50001, ISO 26000, and related frameworks.
-            </p>
-            <div class="flex flex-wrap gap-2 text-xs font-semibold text-[#465373]">
-              <span class="rounded bg-gray-100 px-2 py-1">ISO 14001</span>
-              <span class="rounded bg-gray-100 px-2 py-1">ISO 50001</span>
-              <span class="rounded bg-gray-100 px-2 py-1">ISO 26000</span>
-            </div>
-          </div>
-          <div class="rounded-xl border border-[#cbd5e1] bg-white p-6 transition hover:border-[#465373]">
-            <h4 class="mb-3 font-bold leading-snug text-[#1d2858]">Risk, Governance &amp; Asset Management</h4>
-            <p class="mb-4 text-sm leading-relaxed text-gray-600">
-              This area helps organizations improve decision-making, manage risks more effectively, strengthen governance practices, and oversee assets throughout their lifecycle through frameworks such as ISO 31000 and the ISO 55000 series.
-            </p>
-            <div class="flex flex-wrap gap-2 text-xs font-semibold text-[#465373]">
-              <span class="rounded bg-gray-100 px-2 py-1">ISO 31000</span>
-              <span class="rounded bg-gray-100 px-2 py-1">ISO 55000 Series</span>
-            </div>
-          </div>
-          <div class="rounded-xl border border-[#cbd5e1] bg-white p-6 transition hover:border-[#465373]">
-            <h4 class="mb-3 font-bold leading-snug text-[#1d2858]">Information Security, Privacy &amp; Artificial Intelligence</h4>
-            <p class="mb-4 text-sm leading-relaxed text-gray-600">
-              This area supports organizations in protecting information, managing privacy requirements, and establishing effective oversight for digital and Artificial Intelligence systems through standards such as ISO/IEC 27001, ISO/IEC 27701, ISO/IEC 42001, ISO/IEC 20000-1, ISO/IEC 38500, and other related frameworks.
-            </p>
-            <div class="flex flex-wrap gap-2 text-xs font-semibold text-[#465373]">
-              <span class="rounded bg-gray-100 px-2 py-1">ISO/IEC 27001</span>
-              <span class="rounded bg-gray-100 px-2 py-1">ISO/IEC 27701</span>
-              <span class="rounded bg-gray-100 px-2 py-1">ISO/IEC 42001</span>
-              <span class="rounded bg-gray-100 px-2 py-1">ISO/IEC 20000-1</span>
-              <span class="rounded bg-gray-100 px-2 py-1">ISO/IEC 38500</span>
-            </div>
-          </div>
-          <div class="rounded-xl border border-[#cbd5e1] bg-white p-6 transition hover:border-[#465373]">
-            <h4 class="mb-3 font-bold leading-snug text-[#1d2858]">Sector-Specific Management Systems</h4>
-            <p class="mb-4 text-sm leading-relaxed text-gray-600">
-              This area addresses the needs of specialized sectors by improving compliance, technical competence, service quality, and operational control through standards such as ISO 22000 and HACCP for food safety and ISO 21001 for educational organization.
-            </p>
-            <div class="flex flex-wrap gap-2 text-xs font-semibold text-[#465373]">
-              <span class="rounded bg-gray-100 px-2 py-1">ISO 22000</span>
-              <span class="rounded bg-gray-100 px-2 py-1">HACCP</span>
-              <span class="rounded bg-gray-100 px-2 py-1">ISO 21001</span>
+
+          <div class="w-full">
+            <h3 class="bidi-plaintext mb-8 text-2xl font-bold text-[#1d2858]" [attr.dir]="textDir()">{{ section.standardsHeading || '' }}</h3>
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <div *ngFor="let standard of section.standards || []; let i = index" class="rounded-xl border border-[#cbd5e1] bg-white p-6 transition hover:border-[#465373]" data-aos="zoom-in" [attr.data-aos-delay]="i * 100" [class.text-right]="isArabic()">
+                <h4 class="bidi-plaintext mb-3 font-bold leading-snug text-[#1d2858]" [attr.dir]="textDir()">{{ standard.title }}</h4>
+                <p class="bidi-plaintext mb-4 text-sm leading-relaxed text-gray-600" [attr.dir]="textDir()">{{ standard.description }}</p>
+                <div class="flex flex-wrap gap-2 text-xs font-semibold text-[#465373]" [ngClass]="isArabic() ? 'justify-end' : ''">
+                  <span *ngFor="let tag of standard.tags" class="rounded bg-gray-100 px-2 py-1" dir="ltr">{{ tag }}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </ng-container>
 
-    <div class="flex flex-col items-start gap-12 border-t border-gray-200 pt-16 lg:flex-row">
-      <div class="lg:w-1/3 lg:sticky lg:top-32">
-        <div class="mb-4 flex items-center space-x-4">
-          <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-[#1d2858] text-white shadow-md"><i class="fa-solid fa-graduation-cap text-2xl"></i></div>
-          <h2 class="text-2xl font-bold text-[#1d2858]">Training &amp; Capacity Building</h2>
-        </div>
-        <p class="text-[15px] leading-relaxed text-[#465373]">
-          Actinium delivers practical training and capability-building solutions that help organizations strengthen knowledge, improve performance, and embed improvement across teams and functions.
-        </p>
-      </div>
-      <div class="mt-12 rounded-2xl border border-gray-100 bg-white p-8 shadow-sm md:p-10 lg:mt-0 lg:w-2/3">
-        <h3 class="mb-6 border-b border-gray-100 pb-4 text-lg font-bold text-[#1d2858]">Services and Activities</h3>
-        <ul class="grid grid-cols-1 gap-x-6 gap-y-1 space-y-4 text-[15px] text-gray-600 md:grid-cols-2 md:space-y-0">
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Training needs assessment</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Development of customized training programs</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Standards awareness and implementation training</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Professional development workshops</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Capacity-building initiatives</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Knowledge transfer support</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Learning evaluation and effectiveness follow-up</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Skills strengthening linked to organizational priorities</li>
-        </ul>
-      </div>
-    </div>
+      <ng-template #standardSection>
+        <div class="flex flex-col items-start gap-12" [ngClass]="isArabic() ? '' : 'lg:flex-row'">
+          <div
+            data-aos="fade-right"
+            [attr.dir]="textDir()"
+            [ngClass]="isArabic() ? 'w-full text-right' : 'lg:w-1/3 lg:sticky lg:top-32'"
+          >
+            <div class="flex w-full items-start gap-4" [ngClass]="isArabic() ? 'flex-row-reverse text-right' : ''">
+              <div class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-[#1d2858] text-white shadow-md">
+                <i [class]="section.icon + ' text-2xl'"></i>
+              </div>
+              <div class="flex-1 space-y-3">
+                <h2 class="bidi-plaintext text-2xl font-bold leading-tight text-[#1d2858]" [attr.dir]="textDir()">{{ section.title }}</h2>
+                <p class="bidi-plaintext text-[15px] leading-relaxed text-[#465373]" [attr.dir]="textDir()">
+                  {{ section.description }}
+                </p>
+              </div>
+            </div>
+          </div>
 
-    <div class="flex flex-col items-start gap-12 border-t border-gray-200 pt-16 lg:flex-row">
-      <div class="lg:w-1/3 lg:sticky lg:top-32">
-        <div class="mb-4 flex items-center space-x-4">
-          <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-[#1d2858] text-white shadow-md"><i class="fa-solid fa-microchip text-2xl"></i></div>
-          <h2 class="text-2xl font-bold text-[#1d2858]">Digital Transformation, Artificial Intelligence &amp; Technology Advisory</h2>
+          <div
+            class="w-full rounded-2xl border border-gray-100 bg-white p-8 shadow-sm md:p-10"
+            data-aos="fade-left"
+            data-aos-delay="100"
+            [ngClass]="isArabic() ? 'text-right' : 'lg:w-2/3'"
+          >
+            <h3 class="bidi-plaintext mb-6 border-b border-gray-100 pb-4 text-lg font-bold text-[#1d2858]" [attr.dir]="textDir()">{{ section.itemsHeading }}</h3>
+            <ul class="grid grid-cols-1 gap-x-6 gap-y-4 text-[15px] text-gray-600 md:grid-cols-2">
+              <li *ngFor="let item of section.items" class="flex items-start" [ngClass]="isArabic() ? 'flex-row-reverse' : ''">
+                <i class="fa-solid fa-check mt-1 text-[#465373]" [ngClass]="isArabic() ? 'ml-3' : 'mr-3'"></i>
+                <span class="bidi-plaintext" [attr.dir]="textDir()">{{ item }}</span>
+              </li>
+            </ul>
+          </div>
         </div>
-        <p class="text-[15px] leading-relaxed text-[#465373]">
-          We support organizations in aligning digital initiatives, emerging technologies, and Artificial Intelligence with strategic priorities to improve efficiency, enable innovation, and strengthen future readiness.
-        </p>
-      </div>
-      <div class="mt-12 rounded-2xl border border-gray-100 bg-white p-8 shadow-sm md:p-10 lg:mt-0 lg:w-2/3">
-        <h3 class="mb-6 border-b border-gray-100 pb-4 text-lg font-bold text-[#1d2858]">Services and Activities</h3>
-        <ul class="grid grid-cols-1 gap-x-6 gap-y-1 space-y-4 text-[15px] text-gray-600 md:grid-cols-2 md:space-y-0">
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Digital transformation advisory</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Technology enablement planning</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Process automation support</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Digital service improvement</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Data-informed decision support</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Artificial Intelligence governance and alignment</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>AI management system readiness support</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Technology advisory linked to business needs</li>
-          <li class="flex items-start"><i class="fa-solid fa-check mt-1 mr-3 text-[#465373]"></i>Transformation planning and implementation support</li>
-        </ul>
-      </div>
+      </ng-template>
     </div>
   </div>
 </section>
 
-<section class="bg-[#0f172a] px-6 py-20 text-center text-white">
+<section class="bg-[#0f172a] px-6 py-20 text-center text-white" data-aos="fade-up">
   <div class="mx-auto max-w-3xl">
-    <h2 class="mb-6 text-3xl font-bold">Ready to Elevate Your Organization?</h2>
-    <p class="mb-10 text-lg text-gray-300">Contact us to discover how our tailored consulting services can bring lasting value to your business.</p>
-    <a class="inline-block rounded-md bg-white px-8 py-3 font-semibold text-[#0f172a] shadow-lg transition-transform hover:-translate-y-1" routerLink="/contact">Get in Touch</a>
+    <h2 class="bidi-plaintext mb-6 text-3xl font-bold" [attr.dir]="textDir()">{{ page().cta.title }}</h2>
+    <p class="bidi-plaintext mb-10 text-lg text-gray-300" [attr.dir]="textDir()">{{ page().cta.description }}</p>
+    <a class="inline-block rounded-md bg-white px-8 py-3 font-semibold text-[#0f172a] shadow-lg transition-transform hover:-translate-y-1" routerLink="/contact">
+      {{ page().cta.buttonLabel }}
+    </a>
   </div>
 </section>

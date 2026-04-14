@@ -1,5 +1,7 @@
 @use './styles/variables' as *;
 @use './styles/theme';
+@import 'aos/dist/aos.css';
+
 
 :root {
   color-scheme: light;
@@ -16,6 +18,10 @@ body {
   color: $color-primary;
 }
 
+html[lang='ar'] body {
+  font-family: 'Cairo', sans-serif;
+}
+
 a,
 button,
 input,
@@ -25,6 +31,40 @@ textarea {
 
 button {
   cursor: pointer;
+}
+
+.bidi-plaintext {
+  unicode-bidi: plaintext;
+}
+
+.bidi-isolate {
+  unicode-bidi: isolate;
+}
+
+@media (min-width: 768px) {
+  .chevron-first {
+    clip-path: polygon(0 0, calc(100% - 1rem) 0, 100% 50%, calc(100% - 1rem) 100%, 0 100%);
+  }
+
+  .chevron-arrow {
+    clip-path: polygon(0 0, calc(100% - 1rem) 0, 100% 50%, calc(100% - 1rem) 100%, 0 100%, 1rem 50%);
+  }
+
+  .chevron-last {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 1rem 50%);
+  }
+
+  .chevron-first-rtl {
+    clip-path: polygon(1rem 0, 100% 0, 100% 100%, 1rem 100%, 0 50%);
+  }
+
+  .chevron-arrow-rtl {
+    clip-path: polygon(1rem 0, 100% 0, calc(100% - 1rem) 50%, 100% 100%, 1rem 100%, 0 50%);
+  }
+
+  .chevron-last-rtl {
+    clip-path: polygon(0 0, 100% 0, calc(100% - 1rem) 50%, 100% 100%, 0 100%);
+  }
 }
 
 .material-symbols-outlined {

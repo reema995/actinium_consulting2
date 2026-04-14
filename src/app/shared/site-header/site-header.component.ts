@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, DestroyRef, inject } from '@angular/core';
+import { Component, DestroyRef, computed, inject } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { filter } from 'rxjs/operators';
 
-import { NAV_ITEMS } from '../../site-content';
+import { I18nService } from '../../i18n.service';
 
 @Component({
   selector: 'app-site-header',
@@ -16,8 +16,11 @@ import { NAV_ITEMS } from '../../site-content';
 export class SiteHeaderComponent {
   private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly i18n = inject(I18nService);
 
-  readonly navItems = NAV_ITEMS;
+  readonly isArabic = this.i18n.isArabic;
+  readonly header = computed(() => this.i18n.content().header);
+  readonly navItems = computed(() => this.header().nav);
   mobileMenuOpen = false;
   currentUrl = this.router.url;
 
@@ -39,5 +42,9 @@ export class SiteHeaderComponent {
 
   toggleMobileMenu(): void {
     this.mobileMenuOpen = !this.mobileMenuOpen;
+  }
+
+  toggleLanguage(): void {
+    this.i18n.toggleLanguage();
   }
 }

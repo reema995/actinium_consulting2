@@ -2,6 +2,62 @@
   display: block;
 }
 
+.service-card-actions {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.service-card-action-row {
+  display: flex;
+  width: 100%;
+}
+
+.service-card-action-row--rtl {
+  justify-content: flex-end;
+}
+
+.service-card-action-row--ltr {
+  justify-content: flex-start;
+}
+
+.service-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.service-card-link--rtl {
+  text-align: right;
+}
+
+.service-card-link--ltr {
+  text-align: left;
+}
+
+.regions-industries__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.regions-industries__item--rtl {
+  direction: rtl;
+  justify-content: flex-start;
+  text-align: right;
+}
+
+.regions-industries__item--ltr {
+  direction: ltr;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.regions-industries__bullet {
+  flex: 0 0 auto;
+}
+
 .chevron-arrow {
   clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%, 10% 50%);
 }
@@ -14,3 +70,8 @@
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 10% 50%);
 }
 @keyframes scroll {0% { transform: translateX(0); } 100% { transform: translateX(-100%); }} .marquee-container { display: flex; overflow: hidden; position: relative; width: 100%; mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); } .marquee-content { display: flex; flex: 0 0 auto; align-items: center; min-width: 100%; animation: scroll 25s linear infinite; gap: 4rem; padding-right: 4rem; } .marquee-container:hover .marquee-content { animation-play-state: paused; }
+.marquee-content-rtl {
+  flex-direction: row-reverse;
+  padding-left: 4rem;
+  padding-right: 0;
+}

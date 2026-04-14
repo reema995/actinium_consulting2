@@ -1,0 +1,145 @@
+:host {
+  display: block;
+}
+
+.footer-grid--rtl {
+  @media (min-width: 768px) {
+    justify-items: end;
+  }
+}
+
+.footer-grid--ltr {
+  @media (min-width: 768px) {
+    justify-items: start;
+  }
+}
+
+.footer-brand--rtl {
+  align-items: flex-end;
+  text-align: right;
+
+  @media (min-width: 768px) {
+    order: 4;
+  }
+}
+
+.footer-brand--ltr {
+  align-items: flex-start;
+  text-align: left;
+
+  @media (min-width: 768px) {
+    order: 1;
+  }
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.footer-column--rtl {
+  align-items: flex-end;
+  justify-self: end;
+  text-align: right;
+}
+
+.footer-column--ltr {
+  align-items: flex-start;
+  justify-self: start;
+  text-align: left;
+}
+
+.footer-column--contact.footer-column--rtl {
+  @media (min-width: 768px) {
+    order: 3;
+  }
+}
+
+.footer-column--company.footer-column--rtl {
+  @media (min-width: 768px) {
+    order: 2;
+  }
+}
+
+.footer-column--follow.footer-column--rtl {
+  @media (min-width: 768px) {
+    order: 1;
+  }
+}
+
+.footer-column--contact.footer-column--ltr {
+  @media (min-width: 768px) {
+    order: 2;
+  }
+}
+
+.footer-column--company.footer-column--ltr {
+  @media (min-width: 768px) {
+    order: 3;
+  }
+}
+
+.footer-column--follow.footer-column--ltr {
+  @media (min-width: 768px) {
+    order: 4;
+  }
+}
+
+.footer-contact-item {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.footer-contact-item--rtl {
+  flex-direction: row-reverse;
+  // justify-content: flex-end;
+  text-align: right;
+}
+
+.footer-contact-item--ltr {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.footer-contact-copy {
+  min-width: 0;
+}
+
+.footer-contact-copy--stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.footer-phone-display {
+  display: block;
+  width: 100%;
+}
+
+.footer-link-item {
+  display: flex;
+  width: 100%;
+}
+
+.footer-link-item--rtl {
+  justify-content: flex-end;
+}
+
+.footer-link-item--ltr {
+  justify-content: flex-start;
+}
+
+.footer-social-handle--rtl {
+  margin-left: auto;
+}
+
+.footer-social-links--rtl {
+  justify-content: flex-end;
+}
+
+.footer-social-links--ltr {
+  justify-content: flex-start;
+}

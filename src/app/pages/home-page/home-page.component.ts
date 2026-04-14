@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { FAQS } from '../../site-content';
+import { I18nService } from '../../i18n.service';
+import { PARTNER_LOGOS } from '../../site-content';
 
 @Component({
   selector: 'app-home-page',
@@ -12,7 +13,13 @@ import { FAQS } from '../../site-content';
   styleUrl: './home-page.component.scss'
 })
 export class HomePageComponent {
-  readonly faqs = FAQS;
+  private readonly i18n = inject(I18nService);
+
+  readonly isArabic = this.i18n.isArabic;
+  readonly textDir = computed(() => (this.isArabic() ? 'rtl' : 'ltr'));
+  readonly page = computed(() => this.i18n.content().home);
+  readonly common = computed(() => this.i18n.content().common);
+  readonly partnerLogos = PARTNER_LOGOS;
   openFaqIndex = 0;
 
   toggleFaq(index: number): void {
